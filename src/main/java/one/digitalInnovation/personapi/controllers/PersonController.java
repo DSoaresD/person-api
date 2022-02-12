@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.AllArgsConstructor;
 import one.digitalInnovation.personapi.dto.response.MessageResponseDTO;
 import one.digitalInnovation.personapi.dto.resquests.PersonDTO;
 import one.digitalInnovation.personapi.exceptions.PersonNotFoundException;
@@ -23,18 +24,13 @@ import one.digitalInnovation.personapi.services.PersonService;
 
 @RestController
 @RequestMapping("/api/v1/people")
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonController {
 	
 	
 
 	private PersonService personService;
 	
-	
-	@Autowired
-	public PersonController(PersonService personService) {
-		this.personService = personService;
-	}
-
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
